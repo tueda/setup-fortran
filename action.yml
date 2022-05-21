@@ -1,0 +1,57 @@
+name: 'Setup Fortran'
+description: Install Fortran compiler
+
+branding:
+  icon: square
+  color: yellow
+
+inputs:
+  fortran-compiler:
+    description: Fortran compiler to install
+    required: false
+    default: gfortran-latest
+  enable-cc:
+    description: Set up C compiler
+    required: false
+    default: 'false'
+  enable-cxx:
+    description: Set up C++ compiler
+    required: false
+    default: 'false'
+  enable-gcov:
+    description: Set up gcov
+    required: false
+    default: 'false'
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Fortran (Linux)
+      run: ${{ github.action_path }}/scripts/setup-linux.sh
+      shell: bash
+      if: ${{ runner.os == 'Linux' }}
+      env:
+        INPUT_FORTRAN_COMPILER: ${{ inputs.fortran-compiler }}
+        INPUT_ENABLE_CC: ${{ inputs.enable-cc }}
+        INPUT_ENABLE_CXX: ${{ inputs.enable-cxx }}
+        INPUT_ENABLE_GCOV: ${{ inputs.enable-gcov }}
+
+    - name: Set up Fortran (macOS)
+      run: ${{ github.action_path }}/scripts/setup-macos.sh
+      shell: bash
+      if: ${{ runner.os == 'macOS' }}
+      env:
+        INPUT_FORTRAN_COMPILER: ${{ inputs.fortran-compiler }}
+        INPUT_ENABLE_CC: ${{ inputs.enable-cc }}
+        INPUT_ENABLE_CXX: ${{ inputs.enable-cxx }}
+        INPUT_ENABLE_GCOV: ${{ inputs.enable-gcov }}
+
+    - name: Set up Fortran (Windows)
+      run: ${{ github.action_path }}/scripts/setup-windows.sh
+      shell: bash
+      if: ${{ runner.os == 'Windows' }}
+      env:
+        INPUT_FORTRAN_COMPILER: ${{ inputs.fortran-compiler }}
+        INPUT_ENABLE_CC: ${{ inputs.enable-cc }}
+        INPUT_ENABLE_CXX: ${{ inputs.enable-cxx }}
+        INPUT_ENABLE_GCOV: ${{ inputs.enable-gcov }}
