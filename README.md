@@ -1,8 +1,19 @@
 # setup-fortran
 
+> :warning: **WARNING**: this software is in an experimental stage. All the features are subject to change.
+
 This action installs a Fortran compiler and adequately sets environment variables
 `FC`, `CC`, `CXX`, `GCOV`, `FPM_FC` and `FPM_CC`.
 The last two are for the [Fortran Package Manager](https://github.com/fortran-lang/fpm).
+
+
+## Usage
+
+```yaml
+  - uses: tueda/setup-fortran@v0.0.1
+    with:
+      fortran-compiler: gfortran-latest
+```
 
 
 ## Options
