@@ -1,5 +1,7 @@
 # setup-fortran
 
+> :exclamation: **NOTE**: development suspended. Try other similar actions, for example, https://github.com/awvwgk/setup-fortran.
+
 > :warning: **WARNING**: this software is in an experimental stage. All the features are subject to change.
 
 This action installs a Fortran compiler and adequately sets environment variables
